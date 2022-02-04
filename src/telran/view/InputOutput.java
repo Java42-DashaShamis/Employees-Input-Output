@@ -38,6 +38,8 @@ public interface InputOutput {
 		});
 	}
 
+	// V.R. The interface isn't the best place for keeping public strings.
+	// It is better to declare these message inside certain methods.
 	String errorNumber = "It is not a number";
 	String errorRange = "The number is not in a certain range";
 	String errorOptions = "There is no such option";
@@ -48,8 +50,12 @@ public interface InputOutput {
 	}
 	
 	default Integer readInt(String prompt, int min, int max) {
+		// V.R. It is possible to do the same using readObject. It will be simpler.
 		return checkRange(prompt, min, max);
 	}
+	/* V.R. Using private methods is allowed for interfaces. 
+	 * But it this case it is possible don't use them.
+	 */
 	private Integer checkRange(String prompt, int min, int max) {
 		while(true) {
 			Integer num = readInt(prompt);
@@ -70,6 +76,7 @@ public interface InputOutput {
 	}
 	
 	default String readStringOption(String prompt, Set<String>options) {
+		// V.R. How user will know which departments are in the list?
 		return readObject(prompt, errorOptions, str -> {
 			if(options.contains(str)) {
 				return str;

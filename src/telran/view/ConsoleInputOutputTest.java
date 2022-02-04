@@ -44,6 +44,10 @@ class ConsoleInputOutputTest {
 	
 	@Test
 	void employeeBySeparateFields() {
+		/* V.R. To print out entered value with it's name after test will help to understand.
+		 *  For example, it may look like:
+		 *  io.writeObjectLine("employee's name="+name);
+		 */
 		Long ID = io.readLong("Enter ID");
 		String name = io.readStringPredicate("Enter name using only letters with capital first letter", "There are not only letters with capital first letter", str -> str.matches("[a-zA-Z]+") && Character.isUpperCase(str.charAt(0)));
 		LocalDate birthDate = io.readDate("Enter date of birth as dd/MM/yyyy", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
