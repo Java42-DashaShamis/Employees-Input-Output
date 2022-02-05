@@ -53,6 +53,8 @@ public interface InputOutput {
 	private Integer checkRange(String prompt, int min, int max) {
 		while(true) {
 			Integer num = readInt(prompt);
+			//[YG] try/catch doesn't make a sense. You throw an you catch :) It complicates the flow with additional unneeded while
+			// and 
 			try {
 				if(num >= min && num <= max) {
 					return num;
